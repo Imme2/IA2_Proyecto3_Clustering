@@ -28,7 +28,7 @@ def k_means(numberOfClusters = 2,
 			if (parentCluster[instanceIndex] != parentCluster):
 				change = True
 			clusterMapping[parentClusterIndex].append(instance)
-
+			parentCluster[instanceIndex] = parentClusterIndex
 
 		for i in range(numberOfClusters):
 			clusters[i] = sum(clusterMapping[i])/len(clusterMapping[i])
