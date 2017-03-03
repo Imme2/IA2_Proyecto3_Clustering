@@ -14,12 +14,13 @@ def k_means(numberOfClusters = 2,
 
 	while (change):
 		change = False
-		minDist = 10**20
 
 		clusterMapping = [[] for i in range(numberOfClusters)]
 
 		for instanceIndex, instance in enumerate(data):
 			parentClusterIndex = 0
+			minDist = 10**20
+
 			for clusterIndex,cluster in enumerate(clusters):
 				aux = distance(instance,cluster)
 				if (aux < minDist):
