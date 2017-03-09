@@ -14,14 +14,15 @@ def getAverageColor(A):
 		G += color[1]
 		B += color[2] 
 
-	R //= length
-	G //= length
-	B //= length
+	if (length != 0):
+		R //= length
+		G //= length
+		B //= length
 
 	return (R,G,B)
 
 def distance(A,B):
-	return sum((A[i]-B[i])**2 for i in range(len(A)))
+	return sum((A[i]-B[i])**2 for i in range(min(len(A),len(B))))
 
 def k_means(numberOfClusters = 2,
 			data = None):
@@ -37,7 +38,7 @@ def k_means(numberOfClusters = 2,
 
 	iteracion = 0
 
-	while (change > 0.01 * len(data)):
+	while (change > 0.01 * len(data) and iteracion < 3):
 		iteracion += 1
 		print(iteracion)
 		print(change)
