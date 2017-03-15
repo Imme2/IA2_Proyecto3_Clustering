@@ -1,5 +1,6 @@
 from k_means import k_means
 from math import sqrt
+from collections import Counter
 
 # Extraida del segundo proyecto
 # Funcion que normaliza la data, asume que el ultimo es la
@@ -21,7 +22,8 @@ if __name__ == '__main__':
     print(points)
     points = normalizar(points)
     multiplier = 0
-    for i in [2, 3]:
+    for i in [2, 3, 4, 5]:
         clusters,mapping = k_means(i,points)
-        print(clusters)
-        print(mapping)
+        print("Iris-Setosa: ",mapping[0:50],Counter(mapping[0:50]),"\n")
+        print("Iris-Versicolor: ",mapping[50:100],Counter(mapping[50:100]),"\n")
+        print("Iris-Virginica: ",mapping[100:150],Counter(mapping[100:150]),"\n")
