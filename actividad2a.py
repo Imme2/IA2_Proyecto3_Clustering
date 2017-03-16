@@ -1,4 +1,4 @@
-from k_means import k_means
+from k_means import k_means,distance
 from math import sqrt
 from collections import Counter
 
@@ -19,11 +19,31 @@ if __name__ == '__main__':
     lines = f.readlines()
     f.close()
     points = [[float(x_i) for x_i in point.strip("\n\r").split(",")] for point in lines if len(point) > 2]
-    print(points)
+    
     points = normalizar(points)
     multiplier = 0
     for i in [2, 3, 4, 5]:
-        clusters,mapping = k_means(i,points)
-        print("Iris-Setosa: ",mapping[0:50],Counter(mapping[0:50]),"\n")
-        print("Iris-Versicolor: ",mapping[50:100],Counter(mapping[50:100]),"\n")
-        print("Iris-Virginica: ",mapping[100:150],Counter(mapping[100:150]),"\n")
+        clusters,mapping = k_means(i,points,False)
+        
+        resultsFile = open("Resultados/resultados_K="+str(i)+".csv","w")
+        resultsFile.write("clase,cluster,cantidad_en_cluster\n")
+        contador_setosa = Counter(mapping[0:50])
+        contador_versicolor = Counter(mapping[50:100])
+        contador_virginica = Counter(mapping[100:150])
+        for j in range(i):
+            resultsFile.write("Iris-Setosa,"+str(i)+","+str(contador_setosa[j])+"\n")
+        for j in range(i):
+            resultsFile.write("Iris-Versicolor,"+str(i)+","+str(contador_versicolor[j])+"\n")
+        for j in range(i):
+            resultsFile.write("Iris-Virginica,"+str(i)+","+str(contador_virginica[j])+"\n")
+        
+        resultsFile.close()
+        
+        
+        resultsFile = open("Resultados/distancias_K="+str(i)+".csv","w")
+        resultsFile.write("cluster_id,instancia_id,distancia\n")
+        for clust in range(len(clusters)) :
+            for instancia in range(len(points)) :
+                dist = distance(points[instancia], clusters[clust])
+                resultsFile.write(str(clust)+","+str(instancia)+","+str(dist)+"\n")
+        resultsFile.close()

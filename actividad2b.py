@@ -3,9 +3,9 @@ from k_means import k_means
 
 if __name__ == '__main__':
 	print("Coloque el nombre de la imagen a comprimir:")
-	imageName = input()
+	#imageName = input()
 
-	imageName = "mudkipz.jpg"
+	imageName = "stardewValley.png"
 	image = Image.open(imageName)
 
 	pixels = image.load()
