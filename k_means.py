@@ -75,9 +75,14 @@ def k_means(numberOfClusters = 2,
 
 	iteracion = 0
 
+	# Se inicializa una cota para las imagenes en 3
+	#  en otro caso se usa 1000.
+	cota = 3 if compression else 1000
+
+
 	# Se empiezan las iteraciones para colocar y mover
 	#  los clusters.
-	while (change > 0.01 * len(data) and iteracion < 1000):
+	while (change > 0.01 * len(data) and iteracion < cota):
 		iteracion += 1
 		#print(iteracion)
 		#print(change)
