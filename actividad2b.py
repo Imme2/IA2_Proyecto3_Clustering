@@ -28,4 +28,4 @@ if __name__ == '__main__':
 		for w in range(width):
 			for h in range(height):
 				pixels[w,h] = clusters[mapping[w*height+h]]
-		image.save(name + "K" + str(i) + "." + extension)		
+		image.save("ImagenesComprimidas/"name + "K" + str(i) + "." + extension)		
