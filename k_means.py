@@ -21,11 +21,23 @@ def getAverageColor(A):
 
 	return (R,G,B)
 
+def getCentre(clusterSet):
+	length = len(clusterSet)
+	features = [0.0 for i in clusterSet[0]]
+	for point in clusterSet :
+		for dim in range(len(point)):
+			features[dim]+=point[dim]
+	if length != 0 :
+		for dim in range(len(point)):
+			features[dim]/=length
+	return features
+
 def distance(A,B):
 	return sum((A[i]-B[i])**2 for i in range(min(len(A),len(B))))
 
 def k_means(numberOfClusters = 2,
-			data = None):
+			data = None,
+			compression=False):
 	if data is None:
 		print("No data provided to use for clustering.")
 		return 0
@@ -38,10 +50,10 @@ def k_means(numberOfClusters = 2,
 
 	iteracion = 0
 
-	while (change > 0.01 * len(data) and iteracion < 3):
+	while (change > 0.01 * len(data) and iteracion < 1000):
 		iteracion += 1
-		print(iteracion)
-		print(change)
+		#print(iteracion)
+		#print(change)
 		change = 0
 
 		clusterMapping = [[] for i in range(numberOfClusters)]
@@ -61,7 +73,9 @@ def k_means(numberOfClusters = 2,
 			parentCluster[instanceIndex] = parentClusterIndex
 
 		for i in range(numberOfClusters):
-			clusters[i] = getAverageColor(clusterMapping[i])
+			clusters[i] = getAverageColor(clusterMapping[i]) \
+					if compression \
+						else getCentre(clusterMapping[i])
 
 
 	print("termine")

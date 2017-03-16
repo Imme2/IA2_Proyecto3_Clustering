@@ -31,11 +31,11 @@ if __name__ == '__main__':
         contador_versicolor = Counter(mapping[50:100])
         contador_virginica = Counter(mapping[100:150])
         for j in range(i):
-            resultsFile.write("Iris-Setosa,"+str(i)+","+str(contador_setosa[j])+"\n")
+            resultsFile.write("Iris-Setosa,"+str(j)+","+str(contador_setosa[j])+"\n")
         for j in range(i):
-            resultsFile.write("Iris-Versicolor,"+str(i)+","+str(contador_versicolor[j])+"\n")
+            resultsFile.write("Iris-Versicolor,"+str(j)+","+str(contador_versicolor[j])+"\n")
         for j in range(i):
-            resultsFile.write("Iris-Virginica,"+str(i)+","+str(contador_virginica[j])+"\n")
+            resultsFile.write("Iris-Virginica,"+str(j)+","+str(contador_virginica[j])+"\n")
         
         resultsFile.close()
         
