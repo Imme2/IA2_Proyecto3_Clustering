@@ -1,0 +1,16 @@
+clase,cluster,cantidad_en_cluster
+Iris-Setosa,0,1
+Iris-Setosa,1,0
+Iris-Setosa,2,0
+Iris-Setosa,3,0
+Iris-Setosa,4,49
+Iris-Versicolor,0,11
+Iris-Versicolor,1,22
+Iris-Versicolor,2,0
+Iris-Versicolor,3,17
+Iris-Versicolor,4,0
+Iris-Virginica,0,1
+Iris-Virginica,1,7
+Iris-Virginica,2,26
+Iris-Virginica,3,16
+Iris-Virginica,4,0
