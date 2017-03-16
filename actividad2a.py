@@ -15,13 +15,18 @@ def normalizar(data):
     return data
 
 if __name__ == '__main__':
+
+    # Leemos la data
     f = open("iris.data","r")
     lines = f.readlines()
     f.close()
     points = [[float(x_i) for x_i in point.strip("\n\r").split(",")] for point in lines if len(point) > 2]
     
+    # Normalizamos
     points = normalizar(points)
-    multiplier = 0
+
+    # para cada K se corre k_means y se 
+    # guardan los resultados en un archivo
     for i in [2, 3, 4, 5]:
         clusters,mapping = k_means(i,points,False)
         
@@ -39,7 +44,7 @@ if __name__ == '__main__':
         
         resultsFile.close()
         
-        
+        # Se guardan las distancias entre clusters e instancias
         resultsFile = open("Resultados/distancias_K="+str(i)+".csv","w")
         resultsFile.write("cluster_id,instancia_id,distancia\n")
         for clust in range(len(clusters)) :
