@@ -49,8 +49,8 @@ def k_means(numberOfClusters = 2,
 	print(len(data), numberOfClusters)
 
 	iteracion = 0
-
-	while (change > 0.01 * len(data) and iteracion < 1000):
+	cota = 3 if compression else 1000
+	while (change > 0.01 * len(data) and iteracion < cota):
 		iteracion += 1
 		#print(iteracion)
 		#print(change)

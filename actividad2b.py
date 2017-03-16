@@ -3,9 +3,9 @@ from k_means import k_means
 
 if __name__ == '__main__':
 	print("Coloque el nombre de la imagen a comprimir:")
-	#imageName = input()
+	imageName = input()
 
-	imageName = "stardewValley.png"
+	#imageName = "stardewValley.png"
 	image = Image.open(imageName)
 
 	pixels = image.load()
@@ -24,8 +24,8 @@ if __name__ == '__main__':
 
 	multiplier = 0
 	for i in [2, 4, 8, 16, 32, 64, 128]:
-		clusters,mapping = k_means(i,flattenedPixels)
+		clusters,mapping = k_means(i,flattenedPixels,compression=True)
 		for w in range(width):
 			for h in range(height):
 				pixels[w,h] = clusters[mapping[w*height+h]]
-		image.save("ImagenesComprimidas/"name + "K" + str(i) + "." + extension)		
+		image.save("ImagenesComprimidas/"+name + "K" + str(i) + "." + extension)		
